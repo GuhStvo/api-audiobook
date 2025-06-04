@@ -3,8 +3,7 @@
 require_once '../services/conexaoDB.php';
 require_once '../models/modelCapitulos.php';
 
-class controllerCapitutlos {
-
+class controllerCapitulos {
     private $model;
 
     public function __construct() {
@@ -12,11 +11,11 @@ class controllerCapitutlos {
         $this->model = new modelCapitulos($db);
     }
 
-    public function listar($id_capitulo = null || $id_livro = null) {
+    public function listar($id_capitulo = null, $id_livro = null) {
         if($id_capitulo) {
             return $this->model->getById($id_capitulo);
         } else if($id_livro) {
-            return $this->model->getById($id_livro);
+            return $this->model->getByLivro($id_livro);
         }
 
         return json_encode(["message" => "Informe o id_livro ou id_capitulo"]);
@@ -33,5 +32,5 @@ class controllerCapitutlos {
     public function remover($id_capitulo) {
         return $this->model->delete($id_capitulo);
     }
-    
+
 }

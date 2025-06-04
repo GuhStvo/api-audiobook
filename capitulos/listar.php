@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $controllerCapitulos = new controllerCapitulos();
     echo json_encode(["capitulos" => $controllerCapitulos->listar($id_capitulo, $id_livro)]);
-    
+
 } else {
     http_response_code(405);
     echo json_encode(["message" => "Método não permitido"]);

@@ -1,10 +1,13 @@
 <?php
 
-if($_SERVER["REQUEST_METHOD" == "DELETE"]) {
+require_once '../controllers/controllerCapitulos.php';
+
+if($_SERVER["REQUEST_METHOD"] == "DELETE") {
 
     $id_capitulo = $_GET["id_capitulo"];
 
-    $contollerCapitulos = new controllerCapitulos();
+    $controllerCapitulos = new controllerCapitulos();
+    echo json_encode($controllerCapitulos->remover($id_capitulo));
 
 } else {
     http_response_code(405);
